@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: dev
+camel.springboot.shutdownTimeout: 2   
+   
+---
+
+spring:
+  profiles: dev
+  
+
+fromRoute: file:data/input?delete=true&readLock=none
+toRoute: file:data/output
+
+message: DEV Environment
+
+  
+---
+
+spring:
+  profiles: stage
+
+fromRoute: file:data/input?delete=true&readLock=none
+toRoute: file:data/output
+  
+message: STAGE Environment
+  
+---
+
+spring:
+  profiles: prod
+ 
+fromRoute: file:data/input?delete=true&readLock=none
+toRoute: file:data/output
+  
+message: PROD Environment  
+  
+---  
